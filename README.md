@@ -14,14 +14,99 @@ when prompted. This is similar to what you do with services like
 [LastPass](lastpass.com).
 
 My initial motivation was to be able to use the passwords generated
-by the pass utility with Google Chrome for Android.
+by the pass utility with Google Chrome for Android. The current implementation
+should work with it.
 
-I only tested with Google Chrome, but I will try to make compatible with
-Firefox and Safari too.
+Currently, this app was only tested with Google Chrome, but I will
+try to make compatible with Firefox and Safari too.
 
 ## How to use
 
-TODO
+
+1.  Setup your pass installation
+
+    Follow the instructions:
+    http://zx2c4.com/projects/password-store/
+
+    If you don't want to do the setup for trying the app out,
+    you can just use the files in the example folder.
+
+2.  Access the app in your browser
+
+    You can pull and run a local webserver:
+
+        git pull https://github.com/waltercacau/upass4web.git
+        python -m SimpleHTTPServer 8080
+
+    And access it at http://localhost:8080.
+
+    Or you can try the following demo hosted version:
+
+    https://upass4web.appspot.com
+
+    *WARNING*: This is just a demo and not a well tested service.
+    Although, the app does not send any information to the server side,
+    I cannot guarantee the security of this demo hosted version. So,
+    use it at your own risk!
+
+    If you are using the demo hosted version, I highly recommend
+    you to use the example files instead of real gpg keys and
+    passwords.
+
+3.  Export your test key
+
+    You need to upload keys in armored text, one at a time.
+    The following command will allow you to import the keys:
+
+    gpg --export-secret-key -a "yourkeyid or email" > /tmp/mykey.asc
+
+    Or you can just use example/upass4web-key.asc
+    Note: The password for the example key is `upass4web` .
+
+4.  Create a test .gpg pass file
+
+    The webapp tries to associate domain names to the file name.
+    So, if you upload a file named `upass4web.appspot.com.gpg` ,
+    when you
+
+    You can either use pass to generate a file:
+
+        pass generate upass4web.appspot.com 10
+
+    Or you can just use example/upass4web.appspot.com.gpg
+
+5.  Upload your test key file
+
+    Go to the Keys tab and upload the file generated at step 3
+    or the example file.
+
+6.  Upload your test pass file
+
+    Go to the Pass tab and upload the file generated at step 3
+    or the example file.
+
+7.  Try seeing the contents of the generated test file
+
+    Click on the eye icon near the pass file on the Pass tab.
+    You will be asked for a password.
+
+8.  Install the bookmarklet
+
+    The link is shown in the footer. With desktop Chrome you can simply
+    drag it to the favorites toolbar.
+
+9.  Try filling a password field
+
+    Use this sample page:
+
+    https://upass4web.appspot.com/password_page_example.html
+
+    Then start the bookmarklet and have fun!
+
+
+## Known issues
+
+*   Decrypting the passwords is relatively slow. It takes about 2 seconds with my android phone.
 
 ## Credit
 
