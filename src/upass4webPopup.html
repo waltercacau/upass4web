@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html manifest="upass4web.appcache">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unix Pass Utility for the Web - upass4web</title>
+
+    <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.0/css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link href="upass4web.css" rel="stylesheet">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.0/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+
+<div class="container">
+    <div class="navbar">
+        <div class="navbar-inner">
+            <span class="brand">upass4web</span>
+        </div>
+    </div>
+
+    <div class="centered" id="passwordPopup">
+        <form>
+            <div class="message"></div>
+            <input id="password" type="password"><br />
+            <button type="button" class="btn btn-danger">Cancelar</button>
+            <button type="submit" class="btn btn-success">OK</button>
+        </form>
+    </div>
+
+</div>
+
+<script>
+setInterval(function() {
+    if(!window.opener || window.opener.closed) {
+        window.close();
+    }
+}, 1000);
+try {
+    if (window.opener && window.opener.upass4web) {
+        window.opener.upass4web.popup._popupCallback(window);
+    }
+} catch(err) {}
+var upass4webReady = true;
+</script>
+</body>
+</html>

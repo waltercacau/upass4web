@@ -1,0 +1,15 @@
+application: upass4web
+version: v1
+runtime: python27
+api_version: 1
+threadsafe: true
+
+handlers:
+
+- url: /
+  static_files: index.html
+  upload: index.html
+
+- url: /(.+)
+  static_files: \1
+  upload: (.*\.(js|html|appcache|css))

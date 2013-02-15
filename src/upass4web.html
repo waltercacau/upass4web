@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html manifest="upass4web.appcache">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unix Pass Utility for the Web - upass4web</title>
+
+    <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.0/css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link href="upass4web.css" rel="stylesheet">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/knockout/2.2.1/knockout-min.js"></script>
+    <script type="text/javascript" src="openpgp.js"></script>
+    <script type="text/javascript" src="upass4web.js"></script>
+
+</head>
+
+<body>
+
+<a href="https://github.com/waltercacau/upass4web" class="hidden-phone"><img style="position: absolute; top: 0; right: 0; border: 0;" src="//s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
+
+<div class="container">
+    <div class="navbar">
+        <div class="navbar-inner">
+            <span class="brand">upass4web</span>
+            <ul class="nav">
+                <li class="active"><a href="#keysTab" data-toggle="tab">Keys</a></li>
+                <li><a href="#passTab" data-toggle="tab">Pass</a></li>
+            </ul>
+        </div>
+    </div>
+
+
+    <div class="tab-content">
+
+        <div class="tab-pane active" id="keysTab">
+            <ul data-bind="foreach: keys" class="unstyled rowlike">
+                <li>
+                    <button class="btn" data-bind="click: $parent.removeKey.bind($parent, $data)"><span class="icon-trash"></span></button>
+                    <span data-bind="text: displayName"></span>
+                </li>
+            </ul>
+
+            <div class="fileinput">
+                <input type="file" class="file" id="uploadKeyFile" data-bind="value: uploadKeyFilePath" />
+                <input data-bind="value: uploadKeyFilePath" />
+                <button class="btn" data-bind="click: uploadKey">Upload Key</button>
+            </div>
+        </div>
+
+        <div class="tab-pane" id="passTab">
+            <ul data-bind="foreach: passwords" class="unstyled rowlike">
+                <li>
+                    <div class="btn-group">
+                        <button class="btn" data-bind="click: $parent.viewPassword.bind($parent, $data)"><span class="icon-eye-open"></span></button>
+                        <button class="btn" data-bind="click: $parent.removePassword.bind($parent, $data)"><span class="icon-trash"></span></button>
+                    </div>
+                    <span data-bind="text: displayName"></span>
+                </li>
+            </ul>
+
+            <div class="fileinput">
+                <input type="file" class="file" id="uploadPasswordFile" data-bind="value: uploadPasswordFilePath" />
+                <input data-bind="value: uploadPasswordFilePath" />
+                <button class="btn" data-bind="click: uploadPassword">Upload Password</button>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="footer">
+        <div class="rowlike visible-phone pull-right">
+            <a href="https://github.com/waltercacau/upass4web">Fork me on GitHub</a>
+        </div>
+        <div class="rowlike">
+            Bookmarklet: <a data-bind="attr: {href: bookmarkletLink},
+                                   click: function() {}">upass4webFill</a>
+        </div>
+
+
+    </div>
+</div>
+
+<script>upass4web.initWebapp();</script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+CACHE MANIFEST
+# v0.1.0: 2012-02-14 14:34:30
+
+CACHE:
+/
+upass4web.html
+upass4webEmbed.html
+upass4webPopup.html
+openpgp.js
+upass4web.js
+upass4web.css
+//cdnjs.cloudflare.com/ajax/libs/knockout/2.2.1/knockout-min.js
+//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.0/js/bootstrap.min.js
+//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js
+//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.0/css/bootstrap-responsive.min.css
+//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.0/css/bootstrap.min.css
+//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.0/img/glyphicons-halflings.png
+//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.0/img/glyphicons-halflings-white.png
+//s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png
+
+# Resources that require the user to be online.
+NETWORK:
+*
